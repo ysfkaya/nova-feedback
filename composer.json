@@ -1,0 +1,34 @@
+{
+    "name": "ysfkaya/nova-feedback",
+    "description": "A Laravel Nova tool.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "tool",
+        "feedback"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ysfkaya\\NovaFeedback\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ysfkaya\\NovaFeedback\\ToolServiceProvider"
+            ]
+        }
+    },
+    "suggest": {
+        "vyuldashev/nova-permission": "Determine the developer and owner roles for your app"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
