@@ -5,6 +5,7 @@ namespace Ysfkaya\NovaFeedback\Resources;
 use App\Nova\Resource;
 use App\Nova\User;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
@@ -62,11 +63,11 @@ class Development extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsToHidden::make('Oluşturan', 'creator', User::class)->currentUser($request),
+            BelongsToHidden::make(trans('nova-feedback::developments.creator'), 'creator', User::class)->currentUser($request),
 
-            Text::make('Konu', 'subject')->rules('required', 'max:255'),
+            Text::make(trans('nova-feedback::developments.subject'), 'subject')->rules('required', 'max:255'),
 
-            Text::make('Durum', 'status')
+            Text::make(trans('nova-feedback::developments.status'), 'status')
                 ->exceptOnForms()
                 ->displayUsing(function ($value) {
                     return DevelopmentModel::displayStatusByValue($value);
@@ -74,15 +75,20 @@ class Development extends Resource
                 ->asHtml()
                 ->sortable(),
 
-            Trix::make('Açıklama', 'body')
+            Trix::make(trans('nova-feedback::developments.description'), 'body')
                 ->rules('required')
                 ->withFiles(),
 
-            Text::make('Fiyat', 'price')->displayUsing(function ($value) {
+            Text::make(trans('nova-feedback::developments.price'), 'price')->displayUsing(function ($value) {
                 return number_format($value, 2) . ' ₺';
             })->onlyOnDetail(),
 
-            Trix::make('Fiyat Açıklaması', 'price_desc')->onlyOnDetail()
+            Trix::make(trans('nova-feedback::developments.price_desc'), 'price_desc')->onlyOnDetail(),
+
+            Date::make(trans('nova-feedback::developments.created_at'), 'created_at', function ($value) {
+                return $value->format('Y-m-d H:i');
+            })->exceptOnForms()->sortable()
+
 
         ];
     }

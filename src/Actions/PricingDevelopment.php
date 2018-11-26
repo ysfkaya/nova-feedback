@@ -40,7 +40,7 @@ class PricingDevelopment extends Action
             $model->update([
                 'price' => $fields->get('price'),
                 'price_desc' => $fields->get('price_desc'),
-                'status' => Development::PRICING
+                'status' => Development::PRICED
             ]);
         }
     }
@@ -53,8 +53,8 @@ class PricingDevelopment extends Action
     public function fields()
     {
         return [
-            Number::make('Fiyat', 'price')->rules('required'),
-            Trix::make('Fiyat Açıklaması', 'price_desc')
+            Number::make(trans('nova-feedback::developments.price'), 'price')->rules('required'),
+            Trix::make(trans('nova-feedback::developments.price_desc'), 'price_desc')
         ];
     }
 

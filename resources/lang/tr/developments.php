@@ -3,8 +3,9 @@
 return [
     'creator' => 'Oluşturan',
     'subject' => 'Konu',
-    'priority' => 'Öncelik',
     'status' => 'Durum',
     'description' => 'Açıklama',
-    'created_at' => 'Oluşturma Tarihi'
+    'created_at' => 'Oluşturma Tarihi',
+    'price' => 'Fiyat',
+    'price_desc' => 'Fiyat Açıklaması'
 ];
