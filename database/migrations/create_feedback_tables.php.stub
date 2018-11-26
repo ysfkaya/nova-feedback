@@ -79,5 +79,6 @@ class CreateFeedbackTables extends Migration
         Schema::dropIfExists('developments');
         Schema::dropIfExists('error_report_replies');
         Schema::dropIfExists('error_reports');
+        Schema::dropIfExists('error_report_participants');
     }
 }
